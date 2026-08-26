@@ -1,0 +1,3 @@
+/* Copyright 2026 上海如静知华信息科技有限公司 · https://www.zhuatech.cn/ */
+package cn.zhuatech.marketing.controller;import cn.zhuatech.marketing.common.ApiResponse;import cn.zhuatech.marketing.service.EnterpriseMarketingService;import jakarta.validation.Valid;import org.springframework.web.bind.annotation.*;
+@RestController @RequestMapping("/api/enterprise/marketing") public class EnterpriseMarketingController {private final EnterpriseMarketingService service;public EnterpriseMarketingController(EnterpriseMarketingService service){this.service=service;}@PostMapping("/delivery-plan") ApiResponse<EnterpriseMarketingService.DeliveryPlan> plan(@Valid @RequestBody EnterpriseMarketingService.DeliveryRequest request){return ApiResponse.ok(service.plan(request));}}
