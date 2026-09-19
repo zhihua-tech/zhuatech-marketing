@@ -1,7 +1,13 @@
 /* Copyright 2026 上海如静知华信息科技有限公司 · https://www.zhuatech.cn/ */
 package cn.zhuatech.marketing.service;
 import jakarta.validation.Valid;import jakarta.validation.constraints.*;import org.springframework.stereotype.Service;import java.math.*;import java.util.*;
+/**
+ * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+ */
 @Service public class EnterpriseMarketingService {
+ /**
+  * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+  */
  public DeliveryPlan plan(@Valid DeliveryRequest req){
   List<ContactDecision> decisions=new ArrayList<>();int eligible=0;
   for(var contact:req.contacts()){
@@ -13,9 +19,24 @@ import jakarta.validation.Valid;import jakarta.validation.constraints.*;import o
   BigDecimal expectedRevenue=expectedConversions.multiply(req.averageOrderValue());BigDecimal roi=req.campaignCost().signum()==0?BigDecimal.ZERO:expectedRevenue.subtract(req.campaignCost()).divide(req.campaignCost(),4,RoundingMode.HALF_UP);
   return new DeliveryPlan(req.campaignNo(),req.contacts().size(),eligible,req.contacts().size()-eligible,money(expectedConversions),money(expectedRevenue),roi,decisions,eligible==0?"BLOCKED":"READY");
  }
+ /**
+  * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+  */
  private BigDecimal money(BigDecimal v){return v.setScale(2,RoundingMode.HALF_UP);}
+ /**
+  * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+  */
  public record DeliveryRequest(@NotBlank String campaignNo,@Positive int frequencyCap,@NotNull @DecimalMin("0") @DecimalMax("1") BigDecimal expectedConversionRate,@NotNull @DecimalMin("0") BigDecimal averageOrderValue,@NotNull @DecimalMin("0") BigDecimal campaignCost,@NotEmpty List<@Valid Contact> contacts){}
+ /**
+  * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+  */
  public record Contact(@NotBlank String contactNo,@NotNull String channelAddress,boolean consentGranted,boolean suppressed,@PositiveOrZero int contactsInWindow){}
+ /**
+  * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+  */
  public record ContactDecision(String contactNo,boolean allowed,List<String> reasons){}
+ /**
+  * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+  */
  public record DeliveryPlan(String campaignNo,int audience,int eligible,int suppressed,BigDecimal expectedConversions,BigDecimal expectedRevenue,BigDecimal projectedRoi,List<ContactDecision> decisions,String decision){}
 }
