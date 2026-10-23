@@ -1,0 +1,51 @@
+[
+  {
+    "patch": {},
+    "expected": {
+      "decision": "PASS",
+      "incrementalConversions": "#20",
+      "netContribution": "#1000",
+      "breakEvenIncrementalOrders": "15"
+    },
+    "error": false
+  },
+  {
+    "patch": {
+      "campaignConversions": "90"
+    },
+    "expected": {
+      "decision": "HOLD",
+      "netContribution": "#-1000"
+    },
+    "error": false
+  },
+  {
+    "patch": {
+      "campaignConversions": "95"
+    },
+    "expected": {
+      "decision": "REVIEW"
+    },
+    "error": false
+  },
+  {
+    "patch": {
+      "contributionPerOrder": "0"
+    },
+    "expected": {
+      "decision": "HOLD",
+      "breakEvenIncrementalOrders": "N/A"
+    },
+    "error": false
+  },
+  {
+    "patch": {
+      "campaignConversions": "70"
+    },
+    "expected": {
+      "incrementalConversions": "#-10",
+      "netContribution": "#-5000"
+    },
+    "error": false
+  }
+]

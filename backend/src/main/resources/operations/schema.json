@@ -1,0 +1,79 @@
+{
+  "slug": "marketing",
+  "title": "增量转化与渠道盈亏情景",
+  "fields": [
+    {
+      "key": "id",
+      "label": "记录编号",
+      "type": "ID"
+    },
+    {
+      "key": "baselineConversions",
+      "label": "同口径基线转化",
+      "type": "NUMBER",
+      "scale": 0,
+      "min": "0",
+      "max": "1000000"
+    },
+    {
+      "key": "campaignConversions",
+      "label": "活动期转化",
+      "type": "NUMBER",
+      "scale": 0,
+      "min": "0",
+      "max": "1000000"
+    },
+    {
+      "key": "contributionPerOrder",
+      "label": "每单扣变动成本贡献",
+      "type": "NUMBER",
+      "scale": 2,
+      "min": "0",
+      "max": "1000000000000"
+    },
+    {
+      "key": "campaignCost",
+      "label": "活动成本",
+      "type": "NUMBER",
+      "scale": 2,
+      "min": "0",
+      "max": "1000000000000"
+    }
+  ],
+  "columns": [
+    {
+      "key": "incrementalConversions",
+      "label": "增量转化数"
+    },
+    {
+      "key": "incrementalContribution",
+      "label": "增量贡献"
+    },
+    {
+      "key": "netContribution",
+      "label": "活动净贡献"
+    },
+    {
+      "key": "breakEvenIncrementalOrders",
+      "label": "盈亏平衡增量单数"
+    }
+  ],
+  "description": "将基线转化与活动转化分开，按输入单笔贡献和活动成本计算增量净贡献，避免把全部销售归因给活动。",
+  "owner": "上海如静知华信息科技有限公司",
+  "website": "https://www.zhuatech.cn/",
+  "authorization": "商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。",
+  "version": 1,
+  "notes": "输入均须为已获授权的同口径数据。金额固定人民币元；比例为百分数。核算结果只用于复核，未审批、未写库、未发起外部调用，也未触发付款、签名、资料销毁或设备控制。建议不构成法律、安全、会计或碳核证结论。",
+  "sample": {
+    "asOf": "2026-10-23",
+    "records": [
+      {
+        "id": "ITEM-001",
+        "baselineConversions": "80",
+        "campaignConversions": "100",
+        "contributionPerOrder": "200",
+        "campaignCost": "3000"
+      }
+    ]
+  }
+}
